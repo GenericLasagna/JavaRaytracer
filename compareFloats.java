@@ -1,3 +1,5 @@
+package JavaRaytracer;
+
 public class compareFloats {
     
     final static float Epsilon = 0.00001f;
