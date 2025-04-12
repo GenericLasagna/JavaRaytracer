@@ -1,21 +1,39 @@
-public class Tuple {
+package JavaRaytracer;
 
-    static float[] a = {4.3f, -4.2f, 3.1f, 0.0f};
+class Tuple {
+    float x, y, z, w;
 
-    @SuppressWarnings("unused")
-    public static void main(String[] args) {
+    Tuple(float x, float y, float z, float w) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.w = w;
+    }
+
+    public static class RVector extends Tuple {
+    
+        RVector(float x, float y, float z) {
+            super(x, y, z, 0.0f);
+        }
+    
         
-        float x = a[0];
-        float y = a[1];
-        float z = a[2];
-        float w = a[3];
+    }
 
-        if (w == 1.0f) {
-            System.out.println("The tuple is Point");
-            
-        }else if (w == 0.0f) {
-            System.out.println("The tuple is a vector");
+    public static class Point extends Tuple {
+        Point(float x, float y, float z){
+            super(x, y, z, 1.0f);
         }
         
     }
+
+    public static class Color extends Tuple {
+
+        Color(float red, float green, float blue){
+            super(red,green,blue,0);
+        }
+        public float getRed() { return this.x; }
+        public float getGreen() { return this.y; }
+        public float getBlue() { return this.z; }
+    }
 }
+
