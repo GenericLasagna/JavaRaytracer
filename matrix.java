@@ -5,10 +5,15 @@ public class matrix {
 
     public static void main(String[] args) {
         matrix m1 = new matrix(3,3);
+        matrix m2 = new matrix(3,3);
 
         modifyMatrix(m1, 0, 0 ,1f);
         
         showMatrix(m1);
+        showMatrix(m2);
+
+        System.out.println("\n"+compareMatrix(m1, m2));
+
 
     }
 
@@ -35,6 +40,30 @@ public class matrix {
               System.out.print(m.values[i][j]+"|"); 
             }
             
+        }
+    }
+
+    public static boolean compareMatrix(matrix mA, matrix mB) {
+        if (mA.values.length == mB.values.length && mA.values[0].length == mB.values[0].length) {
+            
+            int correctAmount = 0;
+            int expectedAmount = (mA.values.length * mA.values[0].length);
+            for (int i = 0; i<mA.values.length; i++){
+                for(int j = 0; j<mB.values[0].length;j++){
+                  if (mA.values[i][j] != mB.values[i][j]) {
+                    return false;
+                  }else{
+                    correctAmount += 1;
+                  }
+                }
+            }
+            if (correctAmount == expectedAmount) {
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
         }
     }
 
