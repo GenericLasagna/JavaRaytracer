@@ -4,11 +4,15 @@ public class matrix {
     float [][] values;
 
     public static void main(String[] args) {
-        matrix m1 = new matrix(3,3);
-        matrix m2 = new matrix(3,3);
-
-        modifyMatrix(m1, 0, 0 ,1f);
+        matrix m1 = new matrix(4,4);
+        matrix m2 = new matrix(4,4);
         
+        float[] c1 = {1f,2f,3f,4f,5f,6f,7f,8f,9f,8f,7f,6f,5f,4f,3f,2f};
+        float[] c2 = {-2f,1f,2f,3f,3f,2f,1f,-1f,4f,3f,6f,5f,1f,2f,7f,8f};
+
+        setMatrix(m1,c1);
+        setMatrix(m2, c2);
+
         showMatrix(m1);
         showMatrix(m2);
 
@@ -65,6 +69,33 @@ public class matrix {
         }else{
             return false;
         }
+    }
+
+    public static void setMatrix(matrix m,float[] contents) 
+    {
+        //gets how many numbers can the matrix hold
+        int expectedAmount = (m.values.length * m.values[0].length);
+
+        //checks if the expected amount of numbers is the same as the numbers recieved
+        if (expectedAmount == contents.length) {
+
+            int numberTurn = 0;
+
+            for (int i = 0; i<m.values.length; i++){
+                for(int j = 0; j<m.values[0].length;j++){
+                    m.values[i][j] = contents[numberTurn]; 
+                    numberTurn += 1;
+
+                }
+            }
+            
+        }else{
+            System.out.println("matrix size and content size does not match");
+        }
+    }
+
+    public static void multiplyMatrixes(String[] args) {
+        
     }
 
     
