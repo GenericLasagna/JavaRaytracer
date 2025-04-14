@@ -14,13 +14,18 @@ public class matrix {
         setMatrix(m2, c2);
 
         showMatrix(m1);
+
+        System.out.println("\n");
         showMatrix(m2);
 
-        System.out.println("\n"+compareMatrix(m1, m2));
+        System.out.println("\n");
+
+        showMatrix(multiplyMatrixes(m1, m2));
 
 
     }
 
+    //creates a matrix object
     matrix(int x, int y){
         values = new float[x][y];
         for (int i = 0; i<x; i++){
@@ -31,12 +36,13 @@ public class matrix {
         }
     }
 
-
+    //modifues and individual element of the matrix
     public static void modifyMatrix(matrix m, int x, int y, float val) {
         m.values[x][y] = val;
         
     }
 
+    //prints matrix in the console
     public static void showMatrix(matrix m) {
         for (int i = 0; i<m.values.length; i++){
             System.out.print("\n");
@@ -47,11 +53,15 @@ public class matrix {
         }
     }
 
+
+    //compares 2 matrixes together
     public static boolean compareMatrix(matrix mA, matrix mB) {
         if (mA.values.length == mB.values.length && mA.values[0].length == mB.values[0].length) {
             
             int correctAmount = 0;
             int expectedAmount = (mA.values.length * mA.values[0].length);
+
+            //checks both matrixes contents to check if each element is  the same
             for (int i = 0; i<mA.values.length; i++){
                 for(int j = 0; j<mB.values[0].length;j++){
                   if (mA.values[i][j] != mB.values[i][j]) {
@@ -61,6 +71,8 @@ public class matrix {
                   }
                 }
             }
+
+            //checks if all the numbers are correct
             if (correctAmount == expectedAmount) {
                 return true;
             }else{
@@ -94,8 +106,24 @@ public class matrix {
         }
     }
 
-    public static void multiplyMatrixes(String[] args) {
+    public static matrix multiplyMatrixes(matrix mA, matrix mB) {
         
+        matrix resultingMatrix = new matrix(mA.values.length, mB.values.length);
+        for (int i = 0; i<mA.values.length; i++){
+
+            for(int j = 0; j<mB.values[0].length;j++){
+              
+                float res = (mA.values[i][0] * mB.values[0][j]) +
+                (mA.values[i][1] * mB.values[1][j]) + 
+                (mA.values[i][2] * mB.values[2][j]) +
+                (mA.values[i][3] * mB.values[3][j]);
+
+                resultingMatrix.values[i][j] = res;
+              
+            }
+        }
+
+        return resultingMatrix;
     }
 
     
