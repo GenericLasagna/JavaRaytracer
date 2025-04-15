@@ -5,24 +5,28 @@ public class matrix {
 
     public static void main(String[] args) {
         matrix m1 = new matrix(4,4);
-        matrix m2 = new matrix(4,4);
-        
-        float[] c1 = {1f,2f,3f,4f,5f,6f,7f,8f,9f,8f,7f,6f,5f,4f,3f,2f};
-        float[] c2 = {-2f,1f,2f,3f,3f,2f,1f,-1f,4f,3f,6f,5f,1f,2f,7f,8f};
+        //matrix m2 = new matrix(4,4);
+        Tuple t1 = new Tuple(1f, 2f, 3f, 1f);
 
-        setMatrix(m1,c1);
-        setMatrix(m2, c2);
+        //float[] c1 = {1f,2f,3f,4f,5f,6f,7f,8f,9f,8f,7f,6f,5f,4f,3f,2f};
+        //float[] c2 = {-2f,1f,2f,3f,3f,2f,1f,-1f,4f,3f,6f,5f,1f,2f,7f,8f};
+        float[] c3 = {1f,2f,3f,4f,2f,4f,4f,2f,8f,6f,4f,1f,0f,0f,0f,1f};
+
+        setMatrix(m1,c3);
+        //setMatrix(m2, c2);
 
         showMatrix(m1);
 
-        System.out.println("\n");
-        showMatrix(m2);
+        //System.out.println("\n");
+        //showMatrix(m2);
 
         System.out.println("\n");
 
-        showMatrix(multiplyMatrixes(m1, m2));
+        //showMatrix(multiplyMatrixes(m1, m2));
 
+        Tuple result = multiplyMatrixTuple(m1, t1);
 
+        System.out.println(result.x + " " +result.y + " " + result.z + " " + result.w);
     }
 
     //creates a matrix object
@@ -126,5 +130,28 @@ public class matrix {
         return resultingMatrix;
     }
 
+    //multiplies a matrix with a tuple
+    public static Tuple multiplyMatrixTuple(matrix m, Tuple t) {
+        
+        //starts the intermediate storage of the data for the tuple
+        float[] floatArray = new float[4];
+        
+        for (int i = 0; i<m.values.length; i++){
+            //gets the cross product ofeach element
+            float res = (m.values[i][0] * t.x) +
+            (m.values[i][1] * t.y) + 
+            (m.values[i][2] * t.z) +
+            (m.values[i][3] * t.w); 
+
+            //stores the results in an array
+            floatArray[i] = res;
+        }
+
+        //Starts a basic Tuple
+        Tuple newTuple = new Tuple(floatArray[0], floatArray[1], floatArray[2], floatArray[3]);
+
+        return newTuple;
+        
+    }
     
 }
