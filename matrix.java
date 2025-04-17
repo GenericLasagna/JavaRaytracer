@@ -22,11 +22,12 @@ public class matrix {
 
         System.out.println("\n");
 
-        //showMatrix(multiplyMatrixes(m1, m2));
+        showMatrix(identityMatrix(m1));
 
-        Tuple result = multiplyMatrixTuple(m1, t1);
+        //Tuple result = multiplyMatrixTuple(m1, t1);
 
-        System.out.println(result.x + " " +result.y + " " + result.z + " " + result.w);
+
+        //System.out.println(result.x + " " +result.y + " " + result.z + " " + result.w);
     }
 
     //creates a matrix object
@@ -152,6 +153,14 @@ public class matrix {
 
         return newTuple;
         
+    }
+    
+    public static matrix identityMatrix(matrix m) {
+        matrix identityM = new matrix(4, 4);
+        
+        float[] identityContents = new float[]{1f,0f,0f,0f,0f,1f,0f,0f,0f,0f,1f,0f,0f,0f,0f,1f};
+        setMatrix(identityM, identityContents);
+        return multiplyMatrixes(m, identityM);
     }
     
 }
