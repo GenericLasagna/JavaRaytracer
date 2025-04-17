@@ -155,6 +155,7 @@ public class matrix {
         
     }
     
+    //multiplies a maatrix with a matrix
     public static matrix identityMatrix(matrix m) {
         matrix identityM = new matrix(4, 4);
         
@@ -163,9 +164,10 @@ public class matrix {
         return multiplyMatrixes(m, identityM);
     }
     
-
+    //method for converting rows into columns and columns into rows
     public static matrix transposeMatrix(matrix m) {
         
+        //new matrix that will hold the new transposed matrix
         matrix transposedMatrix = new matrix(4, 4);
 
         for (int i = 0; i<m.values.length; i++){
@@ -177,4 +179,11 @@ public class matrix {
         }
         return transposedMatrix;
     }
+
+    public static matrix determinant2by2Matrix(matrix m) {
+        float res = (m.values[0][0] * m.values[1][1]) - (m.values[0])
+        return;
+    }
+
+
 }
