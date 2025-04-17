@@ -10,7 +10,7 @@ public class matrix {
 
         //float[] c1 = {1f,2f,3f,4f,5f,6f,7f,8f,9f,8f,7f,6f,5f,4f,3f,2f};
         //float[] c2 = {-2f,1f,2f,3f,3f,2f,1f,-1f,4f,3f,6f,5f,1f,2f,7f,8f};
-        float[] c3 = {1f,2f,3f,4f,2f,4f,4f,2f,8f,6f,4f,1f,0f,0f,0f,1f};
+        float[] c3 = {0f,9f,3f,0f,9f,8f,0f,8f,1f,8f,5f,3f,0f,0f,5f,8f};
 
         setMatrix(m1,c3);
         //setMatrix(m2, c2);
@@ -22,7 +22,7 @@ public class matrix {
 
         System.out.println("\n");
 
-        showMatrix(identityMatrix(m1));
+        showMatrix(transposeMatrix(m1));
 
         //Tuple result = multiplyMatrixTuple(m1, t1);
 
@@ -163,4 +163,18 @@ public class matrix {
         return multiplyMatrixes(m, identityM);
     }
     
+
+    public static matrix transposeMatrix(matrix m) {
+        
+        matrix transposedMatrix = new matrix(4, 4);
+
+        for (int i = 0; i<m.values.length; i++){
+            for(int j = 0; j<m.values[0].length;j++){
+                transposedMatrix.values[j][i] = m.values[i][j] ; 
+                
+
+            }
+        }
+        return transposedMatrix;
+    }
 }
