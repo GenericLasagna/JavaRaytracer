@@ -4,30 +4,27 @@ public class matrix {
     float [][] values;
 
     public static void main(String[] args) {
-        matrix m1 = new matrix(4,4);
-        //matrix m2 = new matrix(4,4);
-        Tuple t1 = new Tuple(1f, 2f, 3f, 1f);
+        //matrix m1 = new matrix(3,3);
+        matrix m2 = new matrix(4,4);
+
+
+        //Tuple t1 = new Tuple(1f, 2f, 3f, 1f);
 
         //float[] c1 = {1f,2f,3f,4f,5f,6f,7f,8f,9f,8f,7f,6f,5f,4f,3f,2f};
-        //float[] c2 = {-2f,1f,2f,3f,3f,2f,1f,-1f,4f,3f,6f,5f,1f,2f,7f,8f};
-        float[] c3 = {0f,9f,3f,0f,9f,8f,0f,8f,1f,8f,5f,3f,0f,0f,5f,8f};
+        float[] c2 = {-2f,1f,2f,3f,3f,2f,1f,-1f,4f,3f,6f,5f,1f,2f,7f,8f};
+        //float[] c3 = {1f,5f,0f,-3f,2f,7f,0f,6f,-3f};
+        //float[] c4 = {1f,5f,-3f,2f};
 
-        setMatrix(m1,c3);
+        setMatrix(m2,c2);
         //setMatrix(m2, c2);
 
-        showMatrix(m1);
-
-        //System.out.println("\n");
-        //showMatrix(m2);
+        showMatrix(m2);
 
         System.out.println("\n");
 
-        showMatrix(transposeMatrix(m1));
+        showMatrix(Submatrix(m2,0,2));
 
-        //Tuple result = multiplyMatrixTuple(m1, t1);
-
-
-        //System.out.println(result.x + " " +result.y + " " + result.z + " " + result.w);
+       
     }
 
     //creates a matrix object
@@ -49,6 +46,7 @@ public class matrix {
 
     //prints matrix in the console
     public static void showMatrix(matrix m) {
+        //System.out.println("\n");
         for (int i = 0; i<m.values.length; i++){
             System.out.print("\n");
             for(int j = 0; j<m.values[0].length;j++){
@@ -180,9 +178,11 @@ public class matrix {
         return transposedMatrix;
     }
 
-    public static matrix determinant2by2Matrix(matrix m) {
-        float res = (m.values[0][0] * m.values[1][1]) - (m.values[0])
-        return;
+    public static float determinant2by2Matrix(matrix m) {
+        float res = (m.values[0][0] * m.values[1][1]) - (m.values[1][0] * m.values[0][1]);
+        return res;
+    }
+
     }
 
 
