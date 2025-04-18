@@ -183,6 +183,35 @@ public class matrix {
         return res;
     }
 
+    public static matrix Submatrix(matrix m, int rowToDelete, int columnToDelete) {
+        matrix submat = new matrix(m.values.length-1, m.values[0].length-1);
+
+        int subI =  0;
+        int subJ = 0;
+
+        for (int i = 0; i < m.values.length ; i++){
+            for(int j = 0; j < m.values[0].length;j++){
+
+                //checks if we are in the row and column to delete
+                if (i != rowToDelete && j != columnToDelete){
+
+                    submat.values[subI][subJ] = m.values[i][j]; 
+                    subJ++;
+
+                    //checks if the SubJ is equal to the length of the matrix colum -
+                    if (subJ == m.values[0].length-1) {
+
+                        //resets the subj to prevent index overflows
+                        subJ = 0;
+
+                        //moves to the next subI number
+                        subI++;
+                    }
+                }
+            }
+        }
+        
+        return submat;
     }
 
 
