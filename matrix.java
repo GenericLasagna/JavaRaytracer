@@ -219,4 +219,7 @@ public class matrix {
         return determinant2by2Matrix(Submatrix(m, row, colum));
     }
 
+    public static void cofactor(matrix m,int row, int colum) {
+        minor(m, row, colum);
+    }
 }
